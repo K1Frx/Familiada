@@ -28,6 +28,7 @@ public class BackController {
     Text[] texts;
     Button[] showButtons;
     public void loadQuestions(){
+        choiceBox.getItems().clear();
         questions[0] = new Question();
         questions[1] = new Question();
         questions[0].setQuestion("Popularne imię dla psa");
