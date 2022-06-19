@@ -39,12 +39,12 @@
       <Line endX="25.0" endY="55.0" layoutX="545.0" layoutY="140.0" startX="5.0" startY="5.0" stroke="YELLOW" strokeLineCap="ROUND" strokeWidth="3.0" />
       <Line endX="5.0" endY="55.0" layoutX="545.0" layoutY="140.0" startX="25.0" startY="5.0" stroke="YELLOW" strokeLineCap="ROUND" strokeWidth="3.0" />
       <Line endX="5.0" endY="55.0" layoutX="205.0" layoutY="140.0" startX="25.0" startY="5.0" stroke="YELLOW" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Button layoutX="525.0" layoutY="310.0" mnemonicParsing="false" text="X1" />
-      <Button layoutX="525.0" layoutY="340.0" mnemonicParsing="false" text="X2" />
-      <Button layoutX="525.0" layoutY="370.0" mnemonicParsing="false" text="X3" />
-      <Button layoutX="225.0" layoutY="310.0" mnemonicParsing="false" text="X1" />
-      <Button layoutX="225.0" layoutY="340.0" mnemonicParsing="false" text="X2" />
-      <Button layoutX="225.0" layoutY="370.0" mnemonicParsing="false" text="X3" />
+      <Button layoutX="525.0" layoutY="310.0" mnemonicParsing="false" onAction="#addPointsX1secondTeam" text="X1" />
+      <Button layoutX="525.0" layoutY="340.0" mnemonicParsing="false" onAction="#addPointsX2secondTeam" text="X2" />
+      <Button layoutX="525.0" layoutY="370.0" mnemonicParsing="false" onAction="#addPointsX3secondTeam" text="X3" />
+      <Button layoutX="225.0" layoutY="310.0" mnemonicParsing="false" onAction="#addPointsX1firstTeam" text="X1" />
+      <Button layoutX="225.0" layoutY="340.0" mnemonicParsing="false" onAction="#addPointsX2firstTeam" text="X2" />
+      <Button layoutX="225.0" layoutY="370.0" mnemonicParsing="false" onAction="#addPointsX3firstTeam" text="X3" />
       <Text layoutX="30.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question File:" />
       <Text layoutX="30.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File" />
       <Button layoutX="76.5" layoutY="68.0" mnemonicParsing="false" onAction="#loadQuestions" text="Load" />
@@ -52,12 +52,12 @@
       <ChoiceBox fx:id="choiceBox" layoutX="22.5" layoutY="165.0" prefWidth="150.0" />
       <Text layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose question:" />
       <Button layoutX="74.0" layoutY="205.0" mnemonicParsing="false" onAction="#applyQuestion" text="Apply" />
-      <Text fill="YELLOW" layoutX="215.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textOrigin="CENTER">
+      <Text fx:id="firstTeamPointsText" fill="YELLOW" layoutX="215.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textOrigin="CENTER">
          <font>
             <Font name="Arial" size="30.0" />
          </font>
       </Text>
-      <Text fill="YELLOW" layoutX="515.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textOrigin="CENTER">
+      <Text fx:id="secondTeamPointsText" fill="YELLOW" layoutX="515.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textOrigin="CENTER">
          <font>
             <Font name="Arial" size="30.0" />
          </font>

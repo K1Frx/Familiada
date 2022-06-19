@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +10,15 @@ import javafx.scene.text.Text;
 
 public class BackController {
 
+    int firstTeamPoints = 0, secondTeamPoints = 0;
+
+    int chosenQuestion;
+
+    @FXML
+    Text firstTeamPointsText;
+    @FXML
+    Text secondTeamPointsText;
+    boolean[] showedAnswers;
     @FXML
     ChoiceBox<String> choiceBox;
     @FXML
@@ -57,12 +65,15 @@ public class BackController {
                 x.setDisable(true);
                 x.setVisible(false);
             }
+            for(Boolean x: showedAnswers){
+                x = false;
+            }
         }
-        int chosenQuestion = -1;
         for(int i=0; i<2; i++){
             if(choiceBox.getValue().equals(questions[i].getQuestion()))
                 chosenQuestion = i;
         }
+        showedAnswers = new boolean[questions[chosenQuestion].getNumberOfAnswers()];
         texts = new Text[questions[chosenQuestion].getNumberOfAnswers()];
         showButtons = new Button[questions[chosenQuestion].getNumberOfAnswers()];
         for(int j=0; j<questions[chosenQuestion].getNumberOfAnswers(); j++){
@@ -89,28 +100,74 @@ public class BackController {
 
     EventHandler<MouseEvent> onClickedShowButton(){
         return mouseEvent -> {
-            int numberOfButton = 10;
-            if(mouseEvent.getSceneY() < 344)
+            int numberOfButton = 0;
+            if(mouseEvent.getSceneY() < 344) {
                 numberOfButton = 9;
-            if(mouseEvent.getSceneY() < 314)
+            }
+            if(mouseEvent.getSceneY() < 314) {
                 numberOfButton = 8;
-            if(mouseEvent.getSceneY() < 284)
+            }
+            if(mouseEvent.getSceneY() < 284){
                 numberOfButton = 7;
-            if(mouseEvent.getSceneY() < 254)
+            }
+            if(mouseEvent.getSceneY() < 254) {
                 numberOfButton = 6;
-            if(mouseEvent.getSceneY() < 224)
+            }
+            if(mouseEvent.getSceneY() < 224) {
                 numberOfButton = 5;
-            if(mouseEvent.getSceneY() < 194)
+            }
+            if(mouseEvent.getSceneY() < 194) {
                 numberOfButton = 4;
-            if(mouseEvent.getSceneY() < 164)
+            }
+            if(mouseEvent.getSceneY() < 164) {
                 numberOfButton = 3;
-            if(mouseEvent.getSceneY() < 134)
+            }
+            if(mouseEvent.getSceneY() < 134) {
                 numberOfButton = 2;
-            if(mouseEvent.getSceneY() < 104)
+            }
+            if(mouseEvent.getSceneY() < 104) {
                 numberOfButton = 1;
-            if(mouseEvent.getSceneY() < 74)
+            }
+            if(mouseEvent.getSceneY() < 74) {
                 numberOfButton = 0;
-            System.out.println("Numer przycisku: " + numberOfButton);
+            }
+            showedAnswers[numberOfButton] = true;
+            System.out.println("Numer przycisku: " + numberOfButton + showedAnswers[numberOfButton]);
         };
+    }
+
+    public void addPoints(int team, int multiplier){
+        int amount = 0;
+        for(int i=0; i<questions[chosenQuestion].getNumberOfAnswers(); i++){
+            if(showedAnswers[i])
+                amount += questions[chosenQuestion].getPoint(i);
+        }
+        if(team == 1){
+            firstTeamPoints += (amount * multiplier);
+            firstTeamPointsText.setText(String.valueOf(firstTeamPoints));
+        }
+        if(team == 2){
+            secondTeamPoints += (amount * multiplier);
+            secondTeamPointsText.setText(String.valueOf(secondTeamPoints));
+        }
+    }
+
+    public void addPointsX1secondTeam(){
+        addPoints(2,1);
+    }
+    public void addPointsX2secondTeam(){
+        addPoints(2,2);
+    }
+    public void addPointsX3secondTeam(){
+        addPoints(2,3);
+    }
+    public void addPointsX1firstTeam(){
+        addPoints(1,1);
+    }
+    public void addPointsX2firstTeam(){
+        addPoints(1,2);
+    }
+    public void addPointsX3firstTeam(){
+        addPoints(1,3);
     }
 }
